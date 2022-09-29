@@ -15,3 +15,13 @@ export const name = (req: Request, res: Response) => {
   let name: string = req.params.name;
   res.json({ nome: `Você enviou o nome ${name}` });
 };
+
+export const createPhrase = async (req: Request, res: Response) => {
+  let { author, txt } = req.body;
+  let newPhrase = await Phrase.create({
+    author,
+    txt,
+  });
+
+  res.json({ id: newPhrase.id, author, txt });
+};

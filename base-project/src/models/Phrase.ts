@@ -23,7 +23,7 @@ export const Phrase = sequelize.define<PhraseInstance>(
     },
   },
   {
-    tableName: "phrares",
+    tableName: "phrases",
     timestamps: false,
   }
 );
