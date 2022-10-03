@@ -5,3 +5,5 @@ GET /frases - listar todas as frases - OK
 GET /frase/123 - pegar infos de uma frase - OK
 PUT /frase/123 - atualizar infos de uma frase - OK
 DELETE /frase/123 - deletar uma frase
+
+GET /frase/aleatoria - pega uma frase aleatoria
