@@ -3,8 +3,18 @@ import multer from "multer";
 
 import * as ApiController from "../controllers/apiController";
 
+// const storageConfig = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, "./tmp");
+//   },
+//   filename: (req, file, cb) => {
+//     cb(null, file.fieldname + "-" + Date.now() + ".jpg");
+//   },
+// });
+const storageConfig = multer.memoryStorage();
+
 const upload = multer({
-  dest: "./tmp",
+  storage: storageConfig,
 });
 
 const router = Router();
@@ -24,13 +34,6 @@ router.delete("/frase/:id", ApiController.deletePhrase);
 
 // router.post("/upload", upload.single("avatar"), ApiController.uploadFile);
 // router.post("/upload", upload.array("avatars", 2), ApiController.uploadFile);
-router.post(
-  "/upload",
-  upload.fields([
-    { name: "avatar", maxCount: 1 },
-    { name: "gallery", maxCount: 3 },
-  ]),
-  ApiController.uploadFile
-);
+router.post("/upload", upload.single("avatar"), ApiController.uploadFile);
 
 export default router;
