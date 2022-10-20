@@ -80,3 +80,17 @@ export const randomPhrase = async (req: Request, res: Response) => {
     res.json({ error: "Não há frases cadastradas" });
   }
 };
+
+export const uploadFile = async (req: Request, res: Response) => {
+  type UploadTypes = {
+    avatar: Express.Multer.File[];
+    gallery: Express.Multer.File[];
+  };
+
+  const files = req.files as UploadTypes;
+
+  console.log("AVATAR", files.avatar);
+  console.log("GALLERY", files.gallery);
+
+  res.json({});
+};

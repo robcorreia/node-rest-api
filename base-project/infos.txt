@@ -7,3 +7,19 @@ PUT /frase/123 - atualizar infos de uma frase - OK
 DELETE /frase/123 - deletar uma frase
 
 GET /frase/aleatoria - pega uma frase aleatoria
+
+
+
+
+
+export const uploadFile = async (req: Request, res: Response) => {
+  // console.log(req.file);
+  // console.log(req.files);
+  // console.log("ARQUIVO", req.file);
+  // console.log("ARQUIVOS", req.files);
+  // const files = req.files as { [fildname: string]: Express.Multer.File[] };
+  console.log("AVATAR", files.avatar);
+  console.log("GALLERY", files.gallery);
+
+  res.json({});
+};
