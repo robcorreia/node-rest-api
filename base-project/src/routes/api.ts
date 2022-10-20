@@ -11,10 +11,19 @@ import * as ApiController from "../controllers/apiController";
 //     cb(null, file.fieldname + "-" + Date.now() + ".jpg");
 //   },
 // });
-const storageConfig = multer.memoryStorage();
+// const storageConfig = multer.memoryStorage();
 
 const upload = multer({
-  storage: storageConfig,
+  dest: "./tmp",
+  fileFilter: (req, file, cb) => {
+    const allowed: string[] = ["image/jpg", "image/jpeg", "image/png"];
+
+    cb(null, allowed.includes(file.mimetype));
+  },
+  limits: {
+    // fieldNameSize: 100,
+    fieldSize: 2000000, //2mb
+  },
 });
 
 const router = Router();
